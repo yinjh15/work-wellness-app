@@ -1,0 +1,30 @@
+# Flutter
+flutter/
+.packages
+.pub-preload-cache/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.iml
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+ios/Pods/
+ios/.symlinks/
+
+# Android
+android/.gradle/
+android/app/build/
+android/local.properties
+
+# General
+*.log
+*.swp
+pubspec.lock
+
+# Project specific
+.flutter_cache/
+.pub-cache/
