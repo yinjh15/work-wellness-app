@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+ <html>
+ <head><meta charset="UTF-8"><title>生成应用图标</title></head>
+ <body style="background:#1A0A2E;color:#fff;font-family:sans-serif;text-align:center;padding:40px;">
+ <h1>🎯 生成工作养生 App 图标</h1>
+ <p>在浏览器中打开此页面，截图并裁剪成以下尺寸：</p>
+ <div id="icons">
+   <canvas id="iconCanvas" width="512" height="512"></canvas>
+ </div>
+ <p>截图后裁剪保存为：</p>
+ <ul style="text-align:left;display:inline-block;">
+   <li>icon.png (48x48 / mdpi)</li>
+   <li>icon-hdpi.png (72x72)</li>
+   <li>icon-xhdpi.png (96x96)</li>
+   <li>icon-xxhdpi.png (144x144)</li>
+   <li>icon-xxxhdpi.png (192x192)</li>
+   <li>splash.png (480x800)</li>
+ </ul>
+ <script>
+   const c = document.getElementById('iconCanvas');
+   const ctx = c.getContext('2d');
+   ctx.clearRect(0, 0, 512, 512);
+   const g = ctx.createRadialGradient(256, 256, 0, 256, 256, 256);
+   g.addColorStop(0, '#9B59D6');
+   g.addColorStop(1, '#7B2FBE');
+   ctx.fillStyle = g;
+   ctx.fillRect(0, 0, 512, 512);
+   ctx.fillStyle = 'rgba(255,255,255,0.9)';
+   ctx.beginPath();
+   ctx.moveTo(256, 100);
+   ctx.quadraticCurveTo(180, 250, 180, 310);
+   ctx.quadraticCurveTo(180, 360, 256, 360);
+   ctx.quadraticCurveTo(332, 360, 332, 310);
+   ctx.quadraticCurveTo(332, 250, 256, 100);
+   ctx.fill();
+   ctx.fillStyle = 'rgba(255,255,255,0.2)';
+   ctx.beginPath();
+   ctx.moveTo(220, 220);
+   ctx.quadraticCurveTo(200, 270, 200, 300);
+   ctx.quadraticCurveTo(200, 320, 220, 320);
+   ctx.quadraticCurveTo(235, 320, 235, 300);
+   ctx.quadraticCurveTo(235, 270, 220, 220);
+   ctx.fill();
+   ctx.strokeStyle = '#fff';
+   ctx.lineWidth = 3;
+   ctx.globalAlpha = 0.5;
+   ctx.beginPath();
+   ctx.arc(256, 350, 60, 0.5, 1.8);
+   ctx.stroke();
+   ctx.globalAlpha = 1;
+ </script>
+ </body>
+ </html>
