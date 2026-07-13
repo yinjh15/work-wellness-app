@@ -1,0 +1,3 @@
+ rootProject.name = 'WorkWellness'
+ include ':app'
+ project(':app').projectDir = new File('platforms/android/app')
