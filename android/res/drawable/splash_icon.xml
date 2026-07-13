@@ -1,0 +1,28 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+   启动屏图标 - 紫色渐变圆形
+   VectorDrawable 兼容所有密度
+ -->
+ <vector xmlns:android="http://schemas.android.com/apk/res/android"
+     android:width="120dp"
+     android:height="120dp"
+     android:viewportWidth="120"
+     android:viewportHeight="120">
+
+     <!-- 背景圆 -->
+     <path
+         android:fillColor="#7B2FBE"
+         android:pathData="M60,60m-55,0a55,55 0,1 1,110 0a55,55 0,1 1,-110 0" />
+
+     <!-- 内部渐变圆 -->
+     <path
+         android:fillColor="#9B59D6"
+         android:pathData="M60,60m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0" />
+
+     <!-- 水滴图标 (简化) -->
+     <path
+         android:fillColor="#FFFFFF"
+         android:fillAlpha="0.9"
+         android:pathData="M60,35 C60,35 45,55 45,65 C45,73.28 51.72,80 60,80 C68.28,80 75,73.28 75,65 C75,55 60,35 60,35 Z" />
+
+ </vector>
