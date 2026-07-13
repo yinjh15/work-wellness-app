@@ -1,0 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <resources>
+     <string name="app_name">工作养生</string>
+     <string name="app_description">定时活动提醒 · 饮水提醒 · 工作计时</string>
+ </resources>
