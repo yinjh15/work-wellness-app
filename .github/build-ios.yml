@@ -1,0 +1,72 @@
+ name: 编译 iOS IPA
+ 
+ on:
+   workflow_dispatch:   # 手动触发
+   push:
+     branches: [main, master]
+     paths:
+       - 'ios/**'
+       - '.github/workflows/build-ios.yml'
+ 
+ jobs:
+   build:
+     name: 编译工作养生 iOS App
+     runs-on: macos-14
+ 
+     steps:
+       - name: 检出代码
+         uses: actions/checkout@v4
+ 
+       - name: 安装 XcodeGen
+         run: brew install xcodegen
+ 
+       - name: 生成应用图标
+         working-directory: ios/WorkWellness/www/icons
+         run: python3 generate_icons.py --ios
+ 
+       - name: 生成 Xcode 项目
+         working-directory: ios
+         run: xcodegen
+ 
+       - name: 编译 App（不签名）
+         working-directory: ios
+         run: |
+           xcodebuild \
+             -project WorkWellness.xcodeproj \
+             -scheme WorkWellness \
+             -configuration Release \
+             -derivedDataPath build \
+             CODE_SIGNING_ALLOWED=NO \
+             CODE_SIGNING_REQUIRED=NO
+ 
+       - name: 打包成 IPA
+         run: |
+           # 找到编译好的 .app 包
+           APP_PATH=$(find ios/build -name "*.app" -type d | head -1)
+           echo "找到 App: $APP_PATH"
+           
+           # 创建 Payload 目录
+           mkdir -p Payload
+           cp -R "$APP_PATH" Payload/
+           
+           # 打包为 IPA
+           zip -r "工作养生-unsigned.ipa" Payload/
+           rm -rf Payload
+ 
+       - name: 上传 IPA 工件
+         uses: actions/upload-artifact@v4
+         with:
+           name: 工作养生-iOS-IPA
+           path: 工作养生-unsigned.ipa
+           if-no-files-found: error
+ 
+       - name: 上传 .app 包（作为备用）
+         uses: actions/upload-artifact@v4
+         with:
+           name: 工作养生-iOS-App
+           path: |
+             ios/build/Build/Products/Release-iphoneos/*.app
+           if-no-files-found: warn
+ 
+       - name: 完成
+         run: echo "IPA 编译完成！下载 工作养生-iOS-IPA 工件，用 Sideloadly 装到 iPhone"
