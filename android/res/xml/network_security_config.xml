@@ -1,0 +1,12 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+   网络安全配置 - 离线应用
+   允许本地 WebView 加载所有资源
+ -->
+ <network-security-config>
+     <base-config cleartextTrafficPermitted="true">
+         <trust-anchors>
+             <certificates src="system" />
+         </trust-anchors>
+     </base-config>
+ </network-security-config>
