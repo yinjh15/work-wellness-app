@@ -1,0 +1,41 @@
+ <?xml version='1.0' encoding='utf-8'?>
+ <widget id="com.workwellness.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+     <name>工作养生</name>
+     <description>一款帮助上班族保持健康的工作养生应用</description>
+     <author email="dev@workwellness.app" href="">工作养生团队</author>
+     <content src="index.html" />
+     <access origin="*" />
+     <allow-intent href="http://*/*" />
+     <allow-intent href="https://*/*" />
+     <platform name="android">
+         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/drawable/splash_icon.xml" />
+         <preference name="AndroidWindowSplashScreenBackground" value="#1A0A2E" />
+         <preference name="SplashScreenDelay" value="1000" />
+         <preference name="StatusBarOverlaysWebView" value="false" />
+         <preference name="StatusBarBackgroundColor" value="#1A0A2E" />
+         <preference name="StatusBarStyle" value="lightcontent" />
+         <preference name="Fullscreen" value="true" />
+         <preference name="Orientation" value="portrait" />
+         <preference name="HardwareAcceleration" value="true" />
+         <preference name="EnableViewportScale" value="false" />
+         <preference name="AllowInlineMediaPlayback" value="false" />
+         <preference name="android-minSdkVersion" value="26" />
+         <preference name="android-targetSdkVersion" value="34" />
+         <preference name="android-compileSdkVersion" value="34" />
+         <icon src="www/icons/icon.png" density="mdpi" />
+         <icon src="www/icons/icon-hdpi.png" density="hdpi" />
+         <icon src="www/icons/icon-xhdpi.png" density="xhdpi" />
+         <icon src="www/icons/icon-xxhdpi.png" density="xxhdpi" />
+         <icon src="www/icons/icon-xxxhdpi.png" density="xxxhdpi" />
+         <splash src="www/icons/splash.png" density="mdpi" />
+     </platform>
+     <plugin name="cordova-plugin-statusbar" spec="3.0.0" />
+     <plugin name="cordova-plugin-splashscreen" spec="6.0.2" />
+     <plugin name="cordova-plugin-vibration" spec="3.1.1" />
+     <plugin name="cordova-plugin-device" spec="2.1.0" />
+     <feature name="StatusBar">
+         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+     </feature>
+     <allow-navigation href="*" />
+     <allow-intent href="market:*" />
+ </widget>
