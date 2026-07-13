@@ -1,0 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!--
+   Android WebView 配置
+   WorkWellness App - 离线工作养生应用
+ -->
+ <resources>
+     <string name="app_name">工作养生</string>
+ </resources>
