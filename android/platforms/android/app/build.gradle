@@ -1,0 +1,55 @@
+ apply plugin: 'com.android.application'
+
+ android {
+     namespace 'com.workwellness.app'
+     compileSdk 34
+
+     defaultConfig {
+         applicationId "com.workwellness.app"
+         minSdk 26
+         targetSdk 34
+         versionCode 1
+         versionName "1.0.0"
+
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+     }
+
+     buildTypes {
+         release {
+             minifyEnabled true
+             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+             zipAlignEnabled true
+         }
+         debug {
+             minifyEnabled false
+         }
+     }
+
+     compileOptions {
+         sourceCompatibility JavaVersion.VERSION_17
+         targetCompatibility JavaVersion.VERSION_17
+     }
+
+     // 在构建中复制 www 资源到 assets
+     sourceSets {
+         main {
+             assets.srcDirs = ['../../../../www']
+         }
+     }
+ }
+
+ dependencies {
+     implementation 'androidx.appcompat:appcompat:1.6.1'
+     implementation 'androidx.core:core:1.12.0'
+     implementation 'com.google.android.material:material:1.11.0'
+     implementation 'androidx.webkit:webkit:1.9.0'
+ }
+ 
+ // 自定义任务：构建前复制 web 资源
+ task copyWebAssets(type: Copy) {
+     from '../../../../www'
+     into 'src/main/assets/www'
+     include '**/*'
+ }
+ 
+ preBuild.dependsOn copyWebAssets
