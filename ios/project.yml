@@ -1,0 +1,50 @@
+ name: 工作养生
+ options:
+   bundleIdPrefix: com.workwellness
+   deploymentTarget:
+     iOS: "16.0"
+   xcodeVersion: "15.0"
+   generateEmptyDirectories: true
+ 
+ settings:
+   base:
+     SWIFT_VERSION: "5.9"
+     TARGETED_DEVICE_FAMILY: "1"
+     INFOPLIST_FILE: WorkWellness/Info.plist
+     DEVELOPMENT_TEAM: ""
+     CODE_SIGN_STYLE: Automatic
+     PRODUCT_BUNDLE_IDENTIFIER: com.workwellness.app
+     PRODUCT_NAME: 工作养生
+     CURRENT_PROJECT_VERSION: 1
+     MARKETING_VERSION: 1.0.0
+ 
+ targets:
+   WorkWellness:
+     type: application
+     platform: iOS
+     sources:
+       - path: WorkWellness
+         type: group
+         createsGroups: true
+     settings:
+       base:
+         INFOPLIST_FILE: WorkWellness/Info.plist
+         PRODUCT_BUNDLE_IDENTIFIER: com.workwellness.app
+         PRODUCT_NAME: 工作养生
+         IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+         TARGETED_DEVICE_FAMILY: "1"
+     info:
+       path: WorkWellness/Info.plist
+     entitlements:
+      path: WorkWellness/WorkWellness.entitlements
+     preBuildScripts:
+       - name: Generate App Icons
+         script: |
+           if [ -f "$SRCROOT/WorkWellness/www/icons/generate_icons.py" ]; then
+             python3 "$SRCROOT/WorkWellness/www/icons/generate_icons.py" --ios
+           fi
+ 
+ # 生成后的操作说明
+ # 1. brew install xcodegen
+ # 2. cd ios && xcodegen
+ # 3. 打开 WorkWellness.xcodeproj -> 选择签名 Team -> 运行到 iPhone
